@@ -1,29 +1,21 @@
 import { ApolloServer, gql } from "apollo-server";
 
-const typeDef = gql`
+const typeDefs = gql`
+    type User {
+        id: ID,
+        username: String
+    }
+    type Tweets {
+        id: ID,
+        text: String,
+        author: User
+    }    
     type Query {
-        type Author {
-            name: String,
-            articles: [Article],
-            comments: [Comment]
-        }
-        type Article {
-            author: Author,                                       
-            publish-date: String,
-            modify-date: String,
-            title: String,
-            content: String,
-            comments: [Comment]
-        }
-        type Comment {
-            author: Author,
-            article: Article,
-            content: String
-        }
+        allTweets: [Tweets]
     }
 `;
 
-const server = new ApolloServer({});
+const server = new ApolloServer({ typeDefs });
 server.listen().then(({url})=>{
-    console.log(`Running on the ${url}`);
+    console.log(`Running on ${url}`);
 });
