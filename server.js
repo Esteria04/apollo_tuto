@@ -42,9 +42,8 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-        tweet() {
-            console.log("I'm called");
-            return null;
+        tweet(_, { id }) {
+            return tweets.find((tweet) => tweet.id === id);
         },
         ping() {
             return "pong";
