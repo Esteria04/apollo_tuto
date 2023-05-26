@@ -5,13 +5,13 @@ const typeDefs = gql`
         id: ID,
         username: String
     }
-    type Tweets {
+    type Tweet {
         id: ID,
         text: String,
         author: User
     }    
     type Query {
-        allTweets: [Tweets]
+        allTweets: [Tweet]
     }
 `;
 
