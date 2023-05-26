@@ -1,5 +1,4 @@
 import { ApolloServer, gql } from "apollo-server";
-import { assertDirective } from "graphql";
 
 const typeDefs = gql`
     type User {
