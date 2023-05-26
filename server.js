@@ -61,6 +61,11 @@ const resolvers = {
       tweets.push(newTweet);
       return newTweet;
     },
+    deleteTweet(_, { id }) {
+      const tweet = tweets.find((tweets) => tweet.id === id);
+      if (!tweet) return false;
+      tweets = tweets.filter((tweet) => tweet.id !== id);
+    },
   },
 };
 
